@@ -16,7 +16,19 @@ document.getElementById('search').addEventListener('click', function () {
 // search result
 
 const showBook = (fullData, data) => {
-    const err = document.getElementById('error').innerText = `${fullData.numFound} result found !!`;
+
+    // catching error
+
+    if (fullData.numFound === 0) {
+        document.getElementById('error').innerText = "No result Found!! Try again"
+    }
+    else{
+        document.getElementById('error').innerText = `${fullData.numFound} result found !!`;
+    }
+    
+
+    // show book search result
+    
     const container = document.getElementById('show-book');
     data.forEach(data => {
         const bookName = data.title;
