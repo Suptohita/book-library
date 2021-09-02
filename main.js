@@ -4,6 +4,7 @@ document.getElementById('search').addEventListener('click', function () {
 
     // cleaning
     document.getElementById('show-book').innerHTML = '';
+    document.getElementById('error').innerText = ''
 
     // fetching data
 
@@ -18,11 +19,23 @@ const showBook = (fullData, data) => {
     const err = document.getElementById('error').innerText = `${fullData.numFound} result found !!`;
     const container = document.getElementById('show-book');
     data.forEach(data => {
+        console.log(data)
         const bookName = data.title;
-        const author = data.author_name;
-        const publishDate = data.publish_date;
+
+        // authour
+
+        if (data.author_name === undefined  || null){
+            var authour = 'Author not found'
+        }
+        else {
+            var author = data.author_name;
+        }
+
+
+        const publishDate = data.first_publish_year;
         const publisher = data.publisher;
 
+        // cover
         if (data.cover_i === undefined || null) {
             var cover = 'images/download.png';
         }
