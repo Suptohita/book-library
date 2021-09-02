@@ -1,24 +1,37 @@
 document.getElementById('search').addEventListener('click', function () {
-  const userInput = document.getElementById('user-input').value;
-  const bookUrl = `https://openlibrary.org/search.json?q=${userInput}`;
+    const userInput = document.getElementById('user-input').value;
+    const bookUrl = `https://openlibrary.org/search.json?q=${userInput}`;
 
+    // cleaning
+    document.getElementById('show-book').innerHTML = '';
 
-  fetch(bookUrl)
-    .then(response => response.json())
-    .then(data => showBook(data.docs));
+    // fetching data
+
+    fetch(bookUrl)
+        .then(response => response.json())
+        .then(data => showBook(data, data.docs));
 });
 
-const showBook = data => {
-  const container = document.getElementById('show-book')
-  data.forEach(data => {
-    const bookName = data.title
-    const author = data.author_name
-    const publishDate = data.publish_date
-    const publisher = data.publisher
-    const cover = `https://covers.openlibrary.org/b/id/${data.cover_i}-M.jpg`
+// search result
 
-    const div = document.createElement('div')
-    div.innerHTML = `
+const showBook = (fullData, data) => {
+    const err = document.getElementById('error').innerText = `${fullData.numFound} result found !!`;
+    const container = document.getElementById('show-book');
+    data.forEach(data => {
+        const bookName = data.title;
+        const author = data.author_name;
+        const publishDate = data.publish_date;
+        const publisher = data.publisher;
+
+        if (data.cover_i === undefined || null) {
+            var cover = 'images/download.png';
+        }
+        else {
+            var cover = `https://covers.openlibrary.org/b/id/${data.cover_i}-M.jpg`;
+        }
+
+        const div = document.createElement('div');
+        div.innerHTML = `
         <div class="col mb-3">
         <div class="card">
             <div class="row g-0">
@@ -28,16 +41,16 @@ const showBook = data => {
               <div class="col-md-8">
                 <div class="card-body">
                   <h4 class="card-title">${bookName}</h4>
-                  <h6 class="text-muted">Author: ${author.slice(0,2)}</h6>
-                  <h6 class="text-muted">First Publish Date: ${publishDate.slice(0, 1)}</h6>
-                  <h6 class="text-muted">Publisher: ${publisher.slice(0, 2)}</h6>
+                  <h6 class="text-muted">Author: ${author}</h6>
+                  <h6 class="text-muted">First Publish Date: ${publishDate}</h6>
+                  <h6 class="text-muted">Publisher: ${publisher}</h6>
                 </div>
               </div>
             </div>
           </div>
           </div>
-        `
-    container.appendChild(div)
-  })
+        `;
+        container.appendChild(div);
+    });
 
 };
