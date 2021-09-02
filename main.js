@@ -19,13 +19,12 @@ const showBook = (fullData, data) => {
     const err = document.getElementById('error').innerText = `${fullData.numFound} result found !!`;
     const container = document.getElementById('show-book');
     data.forEach(data => {
-        console.log(data)
         const bookName = data.title;
 
         // authour
 
-        if (data.author_name === undefined  || null){
-            var authour = 'Author not found'
+        if (data.author_name === 'undefined' || null || undefined){
+            var author = 'Author not found'
         }
         else {
             var author = data.author_name;
@@ -44,24 +43,17 @@ const showBook = (fullData, data) => {
         }
 
         const div = document.createElement('div');
+        div.classList.add('col')
         div.innerHTML = `
-        <div class="col mb-3">
-        <div class="card">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img style="width: 300px; height: 300px" src='${cover}' class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h4 class="card-title">${bookName}</h4>
-                  <h6 class="text-muted">Author: ${author}</h6>
-                  <h6 class="text-muted">First Publish Date: ${publishDate}</h6>
-                  <h6 class="text-muted">Publisher: ${publisher}</h6>
-                </div>
-              </div>
-            </div>
+         <div class="card mb-5" style="height: 400px; width: 300px; overflow-y: scroll; overflow-x: hidden">
+          <img style="width: 300px; height: 250px" src="${cover}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${bookName}</h5>
+            <h6 class="text-muted">Author: ${author}</h6>
+            <h6 class="text-muted">Publish Date: ${publishDate}</h6>
+            <h6 class="text-muted">Publisher: ${publisher}</h6>
           </div>
-          </div>
+        </div>
         `;
         container.appendChild(div);
     });

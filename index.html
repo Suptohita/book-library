@@ -20,9 +20,6 @@
 
 
 <body>
-<main>
-  <section>
-
     <!--    main web-->
 
     <h2 class = "text-center text-white mt-5 pt-5"><u>Search Your Book</u></h2>
@@ -38,19 +35,17 @@
 
       <!--      error handle-->
 
-      <h6 class = "text-center">
+      <h6 class = "text-center mb-4 mt-2">
         <span id = "error" class = "container mx-5 bg-danger rounded text-center text-white"></span>
       </h6>
-
-
-      <!--      showing book-->
-
-      <div class = "container mt-5 mx-5 mb-5" style = "width: 900px;" id = "show-book">
-      </div>
-
     </div>
-  </section>
-</main>
+
+    <!--      showing book-->
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 g-4 pb-5" id = "show-book">
+    </div>
+</div>
+
 
 <script src = 'main.js'></script>
 <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"

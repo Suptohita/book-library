@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/6. Book-API.iml" filepath="$PROJECT_DIR$/.idea/6. Book-API.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../MealDB With API/.idea/MealDB With API.iml" filepath="$PROJECT_DIR$/../../MealDB With API/.idea/MealDB With API.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../Weather-Update-API/.idea/Weather-Update-API.iml" filepath="$PROJECT_DIR$/../../Weather-Update-API/.idea/Weather-Update-API.iml" />
     </modules>
   </component>
