@@ -15,31 +15,39 @@
       body {
           background: url(images/bg-1.jpg) no-repeat;
           background-size: cover;
-          height: 100vh;
+          background-attachment: fixed;
       }
   </style>
 </head>
 
+
 <body>
-<h2 class="text-center text-white mt-5 pt-5"><u>Search Your Book</u></h2>
-<div class="container">
-  <form class="col-md-6 m-auto pt-5">
-    <div class="input-group mb-3">
-      <input type="text" id="user-input" class="form-control" placeholder="Search Book Here...">
-      <div class="input-group-append">
-        <button type="button" id="search" class="btn btn-warning text-danger">Search</button>
+<main>
+  <section>
+    <h2 class="text-center text-white mt-5 pt-5"><u>Search Your Book</u></h2>
+    <div class="container">
+      <form class="col-md-6 m-auto pt-5">
+        <div class="input-group mb-3">
+          <input type="text" id="user-input" class="form-control" placeholder="Search Book Here...">
+          <div class="input-group-append">
+            <button type="button" id="search" class="btn btn-warning text-danger">Search</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="error">
+      </div>
+
+<!--      row row-cols-1 row-cols-md-2 g-4-->
+      <div class="container mt-5 mx-5 mb-5" style="width: 900px;" id="show-book">
+      </div>
+
+      <div class="text-white text-center " id="show-update">
+
       </div>
     </div>
-  </form>
-
-  <div id="error">
-
-  </div>
-
-  <div class="text-white text-center " id="show-update">
-
-  </div>
-</div>
+  </section>
+</main>
 
 <script src = 'main.js'></script>
 </body>
