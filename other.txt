@@ -1,0 +1,43 @@
+document.getElementById('search').addEventListener('click', function () {
+    const userInput = document.getElementById('user-input').value;
+    const bookUrl = `https://openlibrary.org/search.json?q=${userInput}`;
+
+
+    fetch(bookUrl)
+        .then(response => response.json())
+        .then(data => showBook(data.docs));
+});
+
+const showBook = data => {
+    data.forEach(data => {
+        const bookName = data.title
+        console.log(bookName)
+        const author = data.author_name
+        console.log(author)
+        const publishDate = data.publish_date
+        const publisher = data.publisher
+        const cover = `https://covers.openlibrary.org/b/id/${data.cover_i}-M.jpg`
+        const bookCard = document.getElementById('show-book');
+        bookCard.innerHTML = `
+        <div class="col mb-5">
+          <div class="card">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img style="width: 250px; height: 250px" src='${cover}' class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h4 class="card-title">${bookName}</h4>
+                  <h6 class="text-muted">Author: ${author}</h6>
+                  <h6 class="text-muted">First Publish Date: ${publishDate}</h6>
+                  <h6 class="text-muted">Publisher: ${publisher}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    `;
+    })
+
+};
